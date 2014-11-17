@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
 <body>
 
 <h1>Forgot your username?</h1>
 
 <h2>Please enter the full name on the account</h2>
 
-<form>
+<form id="forgotpassword" action="forgotpassword.php" method="post">
+<div class="group">
+<fieldset>
+<p><label class="field" for="email">Name:</label><input type="text" name="email" class="text40"></p> <!--add first/last name, etc other things-->
+
+<input type="submit" value="Send Email" class="button">
+</fieldset>
+</div>
+</form>
+
+<!--<form>
+<!--<form>
 
 <input type="text" name="firstname" value="first">
 <input type="text" name="lastname" value="last">
@@ -17,10 +31,10 @@
 
 <br><br>
 
-<input type="submit" value="Send Email">
+<input type="submit" value="Send Email" class="button" style="float: left">
 
 
-</form>
+</form>-->
 
 </html>
 </body>
