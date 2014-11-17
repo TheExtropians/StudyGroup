@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Create Account</h1>
+
+<form>
+<table>
+ <tr>
+  <td><th>Name</th> <th><input type="text" name="firstname" value="first"></th> <th><input type="text" name="lastname" value="last"></th></td>
+  <td><th>Date of Birth</th> <th><input type="number" name="month" min="1" max="12"></th> <th><input type="number" name="day" min="1" max="31"></th> <th><input type="number" name="year" min="1900" max="2014"></th></td>
+ </tr>
+ 
+ <tr>
+  <td><th>Email</th> <th><input type="text" name="email"></th></td>
+  <td><th>School/University</th> <th><input type="text" name="school"></th></td>
+ </tr>
+
+ <tr>
+  <td><th>Username</th> <th><input type="text" name="username"></th></td>
+  <td><th>Zipcode</th> <th><input type="number" name="zipcode" max="99999"></th></td>
+ </tr>
+ 
+ <tr>
+  <td><th>Create a Password</th> <th><input type="password" name="password"></th></td>
+ </tr>
+ 
+ <tr>
+  <td><th>Confirm Password</th> <th><input type="password" name="confirmpassword"></th></td>
+ </tr>
+
+</table>
+</form>
+
+<br>
+<form action=login.html>
+    <input type="submit" value="Go Back">
+</form>
+
+<br>
+<form action=createaccount.html> <!--wrong link-->
+    <input type="submit" value="Create Account">
+</form>
+
+</body>
+</html>
