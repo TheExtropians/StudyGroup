@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="main.css">
+</head>
 <body>
 
 <h1>Study Crossroads</h1>
 
-<form> <!--Forms hold text fields, submit buttons, etc-->
-<table>
-  <tr>
-   <th>User name:</th> <th><input type="text" name="username"></th>
-  </tr>
-  <tr>
-   <th>Password:</th> <th><input type="password" name="password"></th>
-  </tr>
-</table>
-<input type="submit" value="Sign In">
+<form id="login" action="login.php" method="post">
+<div class="group">
+<fieldset>
+<p><label class="field" for="username">User name:</label><input type="text" name="username" class="text40"></p>
+<p><label class="field" for="password">Password:</label><input type="password" name="password" class="text40"></p>
+<input type="submit" value="Sign In" class="button">
+</fieldset>
+</div>
 </form>
 
 <br>
 <form action=createaccount.html>
-    <input type="submit" value="Create an Account">
+    <input type="submit" value="Create an Account" class="button" style="float: left">
 </form>
 
-<br>
+<br><br>
 <form action=forgot.html>
-    <input type="submit" value="Forgot Password/Username">
+    <input type="submit" value="Forgot Password/Username" class="button" style="float: left">
 </form>
 
 </body>
