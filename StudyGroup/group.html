@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSC 305</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="src/js/jquery.validVal.js"></script>
+  <script type="text/javascript">
+	$(function() {
+		$('form[name="newmeeting"]').validVal();
+	});
+</script>
+</head>
+<body>
+<div class="wrapper">
+<form name="newmeeting" action="" method="post">
+<div class="group">
+<h2>CSC 305</h2>
+<fieldset>
+<p><label class="field" for="location">Location:</label><input type="text" name="location" required class="text40"></p>
+<p><label class="field" for="time">Time:</label><input type="text" name="time" required class="text40"></p>
+<p><label class="field" for="date">Date:</label><input type="number" name="month" min="1" max="12" required class="text40"> <input type="number" name="day" min="1" max="31" required class="text40"> <input type="number" name="year" min="1900" max="2014" required class="text40"></p>
+<p><label class="field" for="description">Description:</label><input type="text" name="description" class="text40"></p>
+<input type="submit" value="Submit" class="button">
+</fieldset>
+<h3> Students Joined </h3>
+<ul id="joinedstudents" class="joinedlist">
+	<li> Austin Sumigray</li>
+	<li> Brett Boudreau</li>
+	<li> Brian Hamilton</li>
+	<li> Ryan Peterson</li>
+</ul>
+</form>
+<h2>Comment</h2>
+<form name="comment" action="" method="post">
+<fieldset><textarea name="comment" class="textarea" cols=100 rows = 5>
+
+</textarea>
+<input type="submit" value="Submit" class="button">
+</fieldset>
+</div>
+</form>
+</div>
+</body>
+</html>

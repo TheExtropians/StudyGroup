@@ -5,9 +5,10 @@
 <link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
+<div class="wrapper">
 <div class="group">
 <fieldset>
-<form id="searchform" action="search.php" method="post">
+<form id="searchform" action="" method="post"> <!--Implement Search-->
 <p>
 <label class="field" for="classname">Search for open groups by class:</label>
 <input type="text" name="classname" class="textbox-20">
@@ -19,22 +20,8 @@
 <br>
 <fieldset>
 <p><b>Results:</b><br>
-<form id="resultform" action="join.php" method="post">
+<form id="resultform" action="php/join.php" method="post">
 <select name="resultmenu" size="8">
-<option>CSC212</option>
-<option>CSC213</option>
-<option>CSC214</option>
-<option>CSC215</option>
-<option>CSC216</option>
-<option>CSC217</option>
-<option>CSC218</option>
-<option>CSC219</option>
-<option>CSC210</option>
-<option>CSC220</option>
-<option>CSC221</option>
-<option>CSC222</option>
-<option>CSC223</option>
-<option>CSC224</option>
 <option>CSC305</option>
 </select>
 <p>

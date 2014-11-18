@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Create a Group</title>
+<link rel="stylesheet" type="text/css" href="main.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="src/js/jquery.validVal.js"></script>
+  <script type="text/javascript">
+	$(function() {
+		$('form[name="creategroup"]').validVal();
+	});
+</script>
+</head>
+<body>
+<div class="wrapper">
+<h1>Create a Group</h1>
+<form name="creategroup" action="php/creategroup.php" method="post">
+<div class="group">
+<fieldset>
+<p><label class="field" for="subject">Subject:</label><input type="text" name="subject" required class="text40"></p>
+<p><label class="field" for="title">Class Title:</label><input type="text" name="title" required class="text40"></p>
+<p><label class="field" for="prof">Professor:</label><input type="text" name="prof" class="text40"></p>
+<p><label class="field" for="classnum">Class Number:</label><input type="text" name="classnum" required class="text40"></p>
+<h1>Description</h1>
+<p><textarea rows ="5" cols="50" name="desc"></textarea></p>
+<input type="submit" value="Submit" class="button">
+</fieldset>
+</div>
+</form>
+</div>
+</body>
+</html>

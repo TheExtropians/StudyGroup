@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+<div>
+<div id="header">
+<!--<form action="profile.html"><input type="submit" formtarget="contentframe" value="Preferences" class="button"></form><!-->
+<form action="login.html"><input type="submit" value="Logout" class="button"></form> <!--Add Logout-->
+</div>
+<div id="groups">
+<ul class="groupnav">
+<li class="groupnav"><a href="group.html" target="contentframe" class="grouplink">CSC 305</a></li>
+</ul>
+</div>
+<div id="center">
+<div id="side">
+<ul class="linknav">
+<li class="linknav"><a href="mainpage.html" target="contentframe" class="sidelink">Home</a></li>
+<li class="linknav"><a href="profile.html" target="contentframe" class="sidelink">Profile</a></li>
+<li class="linknav"><a href="creategroup.html" target="contentframe" class="sidelink">Create a Group</a></li>
+<li class="linknav"><a href="find.html" target="contentframe" class="sidelink">Find Groups</a></li>
+</ul>
+</div>
+<div id="content">
+<iframe src="mainpage.html" name="contentframe" seamless='seamless'></iframe>
+</div>
+</div>
+<div id="footer">
+<h1>System Messages</h1>
+<span id="systemmessages">No downtime is currently scheduled.</span>
+</div>
+</div>
+</body>
+</html>
