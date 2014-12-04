@@ -17,11 +17,12 @@
 <form name="creategroup" action="php/creategroup.php" method="post">
 <div class="group">
 <fieldset>
-<p><label class="field" for="subject">Subject:</label><input type="text" name="subject" required class="text40"></p>
 <p><label class="field" for="title">Class Title:</label><input type="text" name="title" required class="text40"></p>
+<p><label class="field" for="classnum">Class Section:</label><input type="text" name="classnum" required class="text40"></p>
+<p><label class="field" for="location">Location of Group Meeting:</label><input type="text" name="location" class="text40"></p>
+<p><label class="field" for="time">Time of Group Meeting:</label><input type="text" name="time" class="text40"></p>
 <p><label class="field" for="prof">Professor:</label><input type="text" name="prof" class="text40"></p>
-<p><label class="field" for="classnum">Class Number:</label><input type="text" name="classnum" required class="text40"></p>
-<h1>Description</h1>
+<h1>Group Description</h1>
 <p><textarea rows ="5" cols="50" name="desc"></textarea></p>
 <input type="submit" value="Submit" class="button">
 </fieldset>

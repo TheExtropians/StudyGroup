@@ -1,4 +1,21 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="studygroup";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+	or die ('Could not connect to the database server' . mysqli_connect_error());
+
+if ($_POST) {
+	$search = $_POST['classname'];
+	}
+?>
 <html>
 <head>
 <title>Search for Groups</title>
@@ -8,7 +25,7 @@
 <div class="wrapper">
 <div class="group">
 <fieldset>
-<form id="searchform" action="" method="post"> <!--Implement Search-->
+<form name="searchform" action="find.html" method="post"> <!--Implement Search-->
 <p>
 <label class="field" for="classname">Search for open groups by class:</label>
 <input type="text" name="classname" class="textbox-20">
@@ -20,12 +37,19 @@
 <br>
 <fieldset>
 <p><b>Results:</b><br>
-<form id="resultform" action="php/join.php" method="post">
+<form name="resultform" action="php/join.php" method="post">
 <select name="resultmenu" size="8">
-<option>CSC305</option>
-</select>
+<?php
+if ($_POST) {
+	$query = "SELECT name,studyID,section FROM class LEFT JOIN (studygroup) ON (class.classID = studygroup.classID) WHERE name LIKE '%$search%'";
+	$result = mysqli_query($con, $query);
+	while($row = $result->fetch_assoc()){
+	echo '<option value="'.$row['studyID'].'">'.$row['name'].' Section: '.$row['section'].'</option>';
+	}
+}
+?>
+</select> 
 <p>
-<input type="button" value="Info" class="button" onclick="info()"> <!--AJAX-->
 <input type="submit" value="Join Group" class="button">
 </p>
 </form></p>

@@ -1,6 +1,21 @@
 <!-- Main Page -->
 
 <!DOCTYPE html>
+<?php
+session_start();
+
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="studygroup";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+	or die ('Could not connect to the database server' . mysqli_connect_error());
+$email = $_SESSION['login_user'];
+
+?>
 <html>
 <!-- Uses CSS stylesheet -->
 <head>
@@ -14,27 +29,39 @@
 <fieldset>
 <p>
 Recent Messages<br>
-<textarea readonly name="recentmessages" class="textarea" cols=100 rows = 5>
-11-19-2014 - From jsmith (CSC 305): Just letting everyone know I can't make it today.
+<textarea readonly name="recentmessages" class="textarea" cols="100" rows = "10">
+<?php
 
-11-18-2014 - From TheExtropian (CSC 305): Hi everyone! Don't forget we are going to meet on Friday to study for the exam.
+//Get comments.
+$query = "SELECT commentTime,creator,comment FROM comment LEFT JOIN (studyjoin) ON (comment.studyID = studyjoin.studyID) WHERE email='$email' ORDER BY commentID DESC LIMIT 5";
+$result = mysqli_query($con, $query);
+	while($row = $result->fetch_assoc()){
+	echo $row['commentTime'];
+	echo "\t";
+	echo $row['creator'];
+	echo "\t";
+	echo $row['comment'];
+	echo "\n\n";
+	}
 
-11-17-2014 - From jdoe (CSC 305): Does anyone have the notes from yesterday's class?
+?>
 </textarea>
 </p>
 
 <p>
-Recent Joins<br>
-<textarea readonly name="recentjoins" class="textarea" cols=100 rows = 5>
-09-05-2014 - Joined Study Group "CSC 305"
-</textarea>
-</p>
-
-<p>
-Important Dates<br>
-<textarea readonly name="importantdates" class="textarea" cols=100 rows = 5>
-11-19-2014 - Meeting: CSC 305
-11-26-2014 - Meeting: CSC 305
+Meeting Times<br>
+<textarea readonly name="importantdates" class="textarea" cols="100" rows = "5">
+<?php
+//Get group dates.
+$query = "SELECT studyTime,name FROM studygroup LEFT JOIN (studyjoin,class) ON (studygroup.studyID = studyjoin.studyID AND studygroup.classID = class.classID) WHERE email='$email'";
+$result = mysqli_query($con, $query);
+	while($row = $result->fetch_assoc()){
+	echo 'Time: '."\t".$row['studyTime'];
+	echo "\t";
+	echo 'Class: '.$row['name'];
+	echo "\n";
+	}
+?>
 </textarea>
 </p>
 </fieldset>

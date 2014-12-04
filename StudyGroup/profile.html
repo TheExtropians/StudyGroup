@@ -1,4 +1,29 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="studygroup";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+	or die ('Could not connect to the database server' . mysqli_connect_error());
+$email = $_SESSION['login_user']; 
+$query = mysqli_query($con, "SELECT * FROM student WHERE email='$email'");
+$result = mysqli_fetch_array($query);
+$firstname = $result['firstName'];
+$lastname = $result['lastName'];
+$fullname = $firstname.' '.$lastname;
+$dob = $result['dateOfBirth'];
+$school = $result['federalCode'];
+$graduateyear = $result['graduateYear'];
+$major = $result['major'];
+$minor = $result['minor'];
+$concentration = $result['concentration'];	
+?>
 <html>
 <head>
 <title>Profile</title>
@@ -6,17 +31,16 @@
 </head>
 <body>
 <div class="wrapper">
-<form id="profile" action="" method="post">
+<form id="profile" action="php\profile.php" method="post">
 <div class="group">
 <fieldset>
-<p><label class="field" for="name">Name:</label><input type="text" value="Austin Sumigray" name="name" class="text40"></p>
-<p><label class="field" for="dob">Date of Birth:</label><input type="text" value="11/12/89" name="dob" class="text40"></p>
-<p><label class="field" for="gender">Gender:</label><input type="text" value="Male" name="gender" class="text40"></p>
-<p><label class="field" for="school">School:</label><input type="text" value="University of Rhode Island" name="school" class="text40"></p>
-<p><label class="field" for="year">Year:</label><input type="text" value="2014" name="year" class="text40"></p>
-<p><label class="field" for="Major">Major:</label><input type="text" value="Computer Science" name="major" class="text40"></p>
-<p><label class="field" for="Major">Minor:</label><input type="text" value="" name="major" class="text40"></p>
-<p><label class="field" for="Major">Concentration:</label><input type="text" value="" name="major" class="text40"></p>
+<p><label class="field" for="name">Name:</label><input type="text" value="<?php echo htmlentities($fullname); ?>" name="name" class="text40"readonly></p>
+<p><label class="field" for="dob">Date of Birth:</label><input type="text" value="<?php echo htmlentities($dob); ?>" name="dob" class="text40"readonly></p>
+<p><label class="field" for="school">School:</label><input type="text" value="<?php echo htmlentities($school); ?>" name="school" class="text40"readonly></p>
+<p><label class="field" for="year">Year:</label><input type="text" value="<?php echo htmlentities($graduateyear); ?>" name="year" class="text40"></p>
+<p><label class="field" for="major">Major:</label><input type="text" value="<?php echo htmlentities($major); ?>" name="major" class="text40"></p>
+<p><label class="field" for="minor">Minor:</label><input type="text" value="<?php echo htmlentities($minor); ?>" name="minor" class="text40"></p>
+<p><label class="field" for="concentration">Concentration:</label><input type="text" value="<?php echo htmlentities($concentration); ?>" name="concentration" class="text40"></p>
 <input type="submit" value="Update" class="button">
 </fieldset>
 </div>

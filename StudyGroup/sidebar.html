@@ -1,4 +1,19 @@
 <!DOCTYPE html>
+<?php
+session_start();
+$host="localhost";
+$port=3306;
+$socket="";
+$user="root";
+$password="";
+$dbname="studygroup";
+
+$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
+	or die ('Could not connect to the database server' . mysqli_connect_error());
+
+//$con->close();
+$email = $_SESSION['login_user'];
+?>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="main.css">
@@ -7,11 +22,18 @@
 <div>
 <div id="header">
 <!--<form action="profile.html"><input type="submit" formtarget="contentframe" value="Preferences" class="button"></form><!-->
-<form action="login.html"><input type="submit" value="Logout" class="button"></form> <!--Add Logout-->
+<form action="php\logout.php"><input type="submit" value="Logout" class="button"></form> <!--Add Logout-->
 </div>
 <div id="groups">
 <ul class="groupnav">
-<li class="groupnav"><a href="group.html" target="contentframe" class="grouplink">CSC 305</a></li>
+<?php
+//Get Groups.
+$query = "SELECT studygroup.studyID,name FROM studygroup LEFT JOIN (studyjoin,class) ON (studygroup.studyID = studyjoin.studyID AND studygroup.classID = class.classID) WHERE email='$email'";
+$result = mysqli_query($con, $query);
+	while($row = $result->fetch_assoc()){
+	echo '<li class="groupnav"><a href="php\group.php?group='.$row['studyID'].'" target="contentframe" class="grouplink">'.$row['name'].'</a></li>';
+	}
+?>
 </ul>
 </div>
 <div id="center">

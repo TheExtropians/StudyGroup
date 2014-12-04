@@ -11,16 +11,15 @@ $dbname="studygroup";
 $con = new mysqli($host, $user, $password, $dbname, $port, $socket)
 	or die ('Could not connect to the database server' . mysqli_connect_error());
 
-$currentyear = $_POST['currentyear']; 
-$graduationdate = $_POST['graduationdate']; 
+$graduateyear = $_POST['year'];
 $email = $_SESSION['login_user']; 
 $major = $_POST['major']; 
 $minor = $_POST['minor']; 
 $concentration = $_POST['concentration'];
 	
 
-	if ($query = mysqli_query($con, "UPDATE student SET currentYear='$currentyear',graduateYear='$graduationdate',major='$major',minor='$minor',concentration='$concentration',firstVisit='1' WHERE email='$email'")) {
-		header('Location: ../sidebar.html');
+	if ($query = mysqli_query($con, "UPDATE student SET graduateYear='$graduateyear',major='$major',minor='$minor',concentration='$concentration' WHERE email='$email'")) {
+		header('Location: ../profile.html');
 	}
 	else {
 		echo 'Connection Failed.';
